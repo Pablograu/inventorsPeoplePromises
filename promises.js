@@ -12,6 +12,15 @@ const handleUserNameError = str => {
   reposContainer.appendChild(errorDiv);
 };
 
+const handleReposError = str => {
+  clearData();
+  reposArray = [];
+  let errorDiv = document.createElement("div");
+  errorDiv.innerHTML = `oopsi, the user ${str} does not have any repo at the moment`;
+  errorDiv.classList.add('error')
+  reposContainer.appendChild(errorDiv);
+};
+
 const clearData = () => {
   reposContainer.innerHTML = "";
 };
@@ -25,14 +34,6 @@ const displayReposList = () => {
   reposArray = [];
 };
 
-const handleReposError = str => {
-  clearData();
-  reposArray = [];
-  let errorDiv = document.createElement("div");
-  errorDiv.innerHTML = `oopsi, the user ${str} does not have any repo at the moment`;
-  errorDiv.classList.add('error')
-  reposContainer.appendChild(errorDiv);
-};
 
 const fetchUsers = async user => {
   const api_call = await fetch(`https://api.github.com/users/${user}/repos`)
