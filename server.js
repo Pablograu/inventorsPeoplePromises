@@ -1,8 +1,6 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const people = require('../people')
-const inventors = require('../inventors')
 
 http.createServer( (request, response) => {
     console.log('request ', request.url);
@@ -42,4 +40,4 @@ http.createServer( (request, response) => {
     });
 
 }).listen(3000);
-console.log('Server running at http://127.0.0.1:3000/');
+console.log('Server running at http://localhost:3000/');

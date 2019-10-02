@@ -13,7 +13,6 @@ const handleUserNameError = str => {
 };
 
 const clearData = () => {
-  console.log("data cleared");
   reposContainer.innerHTML = "";
 };
 
@@ -47,7 +46,6 @@ const showData = () => {
   fetchUsers(inputValue.value)
   .then(response => {
     clearData();
-    console.log("STATUS:", response.body, response.data);
     if (response.data.length > 0) {
       response.data.map(e => {
         reposArray.push(e.name);
