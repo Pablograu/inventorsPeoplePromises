@@ -32,14 +32,34 @@ handleSortedYears = arr => {
 };
 
 handleYearsLived = arr => {
-  let yearsArray = []
+  let yearsArray = [];
 
-  arr.forEach((el) => {
-    yearsArray.push(el.passed - el.year) 
-  })
-  let totalYears = yearsArray.reduce((a, b) => a + b)
-  console.log('The total amout of years lived by all of them is: ', totalYears)
-}
+  arr.forEach(el => {
+    yearsArray.push(el.passed - el.year);
+  });
+  let totalYears = yearsArray.reduce((a, b) => a + b);
+  console.log(
+    `The total amout of years lived by all of them is: ${totalYears}`
+  );
+};
+
+handleSortYearsLived = arr => {
+  let newArr = [];
+
+  arr.forEach(el => {
+    newArr.push({
+      first: el.first,
+      last: el.last,
+      yearsLived: el.passed - el.year
+    });
+  });
+
+  let sortedArr = newArr.sort((a, b) => {
+    return b.yearsLived - a.yearsLived;
+  });
+
+  console.log("SORTED", sortedArr);
+};
 
 const filterByYearButton = document
   .getElementById("yearBorn")
@@ -53,6 +73,10 @@ const sortedYearsButton = document
   .getElementById("sortedYears")
   .addEventListener("click", () => handleSortedYears(inventors));
 
-  const yearsLivedButton = document
+const yearsLivedButton = document
   .getElementById("totalYearsLived")
   .addEventListener("click", () => handleYearsLived(inventors));
+
+const sortedByYearsLived = document
+  .getElementById("sortedYearsLived")
+  .addEventListener("click", () => handleSortYearsLived(inventors));
