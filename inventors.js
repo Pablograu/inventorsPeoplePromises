@@ -13,7 +13,7 @@ const inventors = [
   { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 }
 ];
 
-HandleFilterByYear1500 = arr => {
+handleFilterByYear1500 = arr => {
   arr.filter(el =>
     el.year >= 1500 && el.year <= 1600
       ? console.log(`${el.first} was born in ${el.year}`)
@@ -21,7 +21,38 @@ HandleFilterByYear1500 = arr => {
   );
 };
 
+handleFirstLastName = arr => {
+  arr.map(el => console.log(`First Name: ${el.first} Last Name: ${el.last}`));
+};
+
+handleSortedYears = arr => {
+  const years = arr.map(el => el.year);
+  const sortedYears = years.sort((a, b) => b - a);
+  console.log(sortedYears);
+};
+
+handleYearsLived = arr => {
+  let yearsArray = []
+
+  arr.forEach((el) => {
+    yearsArray.push(el.passed - el.year) 
+  })
+  let totalYears = yearsArray.reduce((a, b) => a + b)
+  console.log('The total amout of years lived by all of them is: ', totalYears)
+}
+
 const filterByYearButton = document
   .getElementById("yearBorn")
-  .addEventListener("click", () => HandleFilterByYear1500(inventors));
+  .addEventListener("click", () => handleFilterByYear1500(inventors));
 
+const mapfirstLastNameButton = document
+  .getElementById("firstLastName")
+  .addEventListener("click", () => handleFirstLastName(inventors));
+
+const sortedYearsButton = document
+  .getElementById("sortedYears")
+  .addEventListener("click", () => handleSortedYears(inventors));
+
+  const yearsLivedButton = document
+  .getElementById("totalYearsLived")
+  .addEventListener("click", () => handleYearsLived(inventors));
