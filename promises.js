@@ -5,32 +5,33 @@ const container = document.querySelector(".container");
 const reposContainer = document.querySelector(".profile-repos");
 let reposArray = [];
 
-const handleUserNameError = (str) => {
+const handleUserNameError = str => {
   let errorDiv = document.createElement("div");
-  errorDiv.innerHTML = (`oopsi, the user ${str} does not exist`)
-  reposContainer.appendChild(errorDiv)
+  errorDiv.innerHTML = `oopsi, the user ${str} does not exist`;
+  reposContainer.appendChild(errorDiv);
 };
 
-
-const handleReposError = (str) => {
-  let errorDiv = document.createElement("div");
-  errorDiv.innerHTML = (`oopsi, the user ${str} does not have any repo at the moment`)
-  reposContainer.appendChild(errorDiv)
-}
-
 const clearData = () => {
-  console.log('data cleared')
-  reposContainer.innerHTML = ''
-}
+  console.log("data cleared");
+  reposContainer.innerHTML = "";
+};
 
 const displayReposList = () => {
-  clearData()
+  console.log("display list");
   reposArray.forEach(el => {
     let reposDiv = document.createElement("p");
     reposDiv.innerHTML = el;
     reposContainer.appendChild(reposDiv);
   });
-  reposArray = []
+  reposArray = [];
+};
+
+const handleReposError = str => {
+  clearData();
+  reposArray = [];
+  let errorDiv = document.createElement("div");
+  errorDiv.innerHTML = `oopsi, the user ${str} does not have any repo at the moment`;
+  reposContainer.appendChild(errorDiv);
 };
 
 const fetchUsers = async user => {
@@ -42,17 +43,21 @@ const fetchUsers = async user => {
 
 const showData = () => {
   fetchUsers(inputValue.value)
-  .then(response => {
-    console.log('STATUS:', response.body, response.data);
-    if (response.data.length > 0) {
-      response.data.map(e => {
-        reposArray.push(e.name);
-      });
-      displayReposList();
-    } else {
-      handleUserNameError(inputValue.value)
-    }
-  });
+    .then(response => {
+      clearData();
+      console.log("STATUS:", response.body, response.data);
+      if (response.data.length > 0) {
+        response.data.map(e => {
+          reposArray.push(e.name);
+        });
+        displayReposList();
+      } else if (response.data.length === 0) {
+        handleReposError(inputValue.value);
+      } else {
+        handleUserNameError(inputValue.value);
+      }
+    })
+    .catch(err => console.log(err));
 };
 
 searchButton.addEventListener("click", () => {
