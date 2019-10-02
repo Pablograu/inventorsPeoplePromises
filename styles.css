@@ -6,17 +6,21 @@ body {
 main {
   text-align: center;
 }
-.inventors {
+.inventors,
+.people {
   text-align: center;
   padding: 10px;
+  background-color: rgba(255, 192, 203, 0.767)
 }
-.inventors div {
-  box-sizing: border-box;
-  border: 1px solid grey;
-  background: pink;
+.inventors div,
+.people div {
+  background: #fff5c0;
   padding: 10px;
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
 }
 
 button {
@@ -27,35 +31,6 @@ button {
   margin: 20px auto;
 }
 
-/* .fancy-button,
-.fancy-button:link,
-.fancy-button:visited {
-  background-color: #5b657c;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
-  color: #fff;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  vertical-align: middle;
-  white-space: nowrap;
-  transition-property: transform;
-  transform: translateZ(0);
-  transition: box-shadow 0.5s cubic-bezier(0.39, 0.5, 0.15, 1.36);
-
-}
-
-.fancy-button:hover {
-  box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
-}
-
-.fancy-button:active {
-  transform: translateY(3px);
-} */
-
 .fancy-button,
 .fancy-button:link,
 .fancy-button:visited {
@@ -65,6 +40,7 @@ button {
   text-transform: uppercase;
   min-width: 100px;
   max-width: 60%;
+  height: 45px;
   position: relative;
   margin: 0 auto;
   border: 2px solid transparent;
@@ -93,12 +69,58 @@ button {
 }
 
 .fancy-button:after,
-  .fancy-button:before {
-    right: -2px;
-    transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
+.fancy-button:before {
+  right: -2px;
+  transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
 
-  .fancy-button:before {
-    left: -2px;
-    right: auto;
-  }
+.fancy-button:before {
+  left: -2px;
+  right: auto;
+}
+
+#button,
+#button:link,
+#button:visited {
+  background-color: #5b657c;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.15) inset;
+  color: #fff;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition-property: transform;
+  transform: translateZ(0);
+  transition: box-shadow 0.5s cubic-bezier(0.39, 0.5, 0.15, 1.36);
+}
+#button:hover {
+  box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
+}
+
+#button:active {
+  transform: translateY(3px);
+}
+
+.container{
+  min-height: 400px;
+  height: 100%;
+  background-color: #40e0d07d;
+}
+
+.error{
+  font-weight: bold;
+  color: #c75842;
+}
+
+#search{
+  width: 50%;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    font-size: 1.5rem;
+}
